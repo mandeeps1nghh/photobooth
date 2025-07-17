@@ -23,14 +23,28 @@ A Telegram bot that creates a retro photobooth filmstrip from user-submitted pho
 
 ### Install dependencies
 ```bash
-pip install python-telegram-bot==20.0b0 Pillow
+pip install -r requirements.txt
 ```
 
-### Configuration
-- Replace the bot token in `main.py` with your own:
-  ```python
-  ApplicationBuilder().token("YOUR_BOT_TOKEN").build()
-  ```
+### Configuration: Using Environment Variables
+
+1. **Create a `.env` file in your project directory:**
+   ```env
+   BOT_TOKEN=your-telegram-bot-token-here
+   ```
+2. **(Optional) Set the environment variable manually:**
+   - **Windows:**
+     ```cmd
+     set BOT_TOKEN=your-telegram-bot-token-here
+     python main.py
+     ```
+   - **Linux/Mac:**
+     ```bash
+     export BOT_TOKEN=your-telegram-bot-token-here
+     python main.py
+     ```
+
+### Code automatically loads the token from `.env` using [python-dotenv](https://pypi.org/project/python-dotenv/).
 
 ### Run the bot
 ```bash
@@ -45,11 +59,13 @@ python main.py
 
 ## File Structure
 - `main.py` — Main bot logic
+- `requirements.txt` — Python dependencies
 - `README.md` — This file
 
 ## Credits
 - Built with [python-telegram-bot](https://python-telegram-bot.org/)
 - Image processing by [Pillow](https://python-pillow.org/)
+- Environment variable support by [python-dotenv](https://pypi.org/project/python-dotenv/)
 
 ---
 
