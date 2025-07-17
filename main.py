@@ -3,6 +3,11 @@ from telegram.ext import ApplicationBuilder, MessageHandler, filters, CommandHan
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from datetime import datetime
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
 
 user_photos = {}
 
@@ -119,7 +124,7 @@ def create_strip(photo_paths):
     return output_path
 
 if __name__ == '__main__':
-    app = ApplicationBuilder().token("7688627343:AAGkiR29yRafdNCT1_QEyFAyfc1Y9LNObSU").build()
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
     app.add_handler(CommandHandler("done", handle_done))
